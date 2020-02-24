@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 const mongoose = require('mongoose');
 const slugify = require('slugify');
+// eslint-disable-next-line no-unused-vars
 const validator = require('validator');
 
 const tourSchema = new mongoose.Schema(
@@ -51,7 +52,7 @@ const tourSchema = new mongoose.Schema(
     priceDiscount: {
       type: Number,
       validate: {
-        validator: function(val){
+        validator: function(val) {
           return val < this.price;
         },
         message: 'Discount price ({VALUE}) must be below regular price'
