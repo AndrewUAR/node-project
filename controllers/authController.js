@@ -21,7 +21,7 @@ const createSendToken = (user, statusCode, res) => {
       user
     }
   });
-}
+};
 
 exports.signup = catchAsync(async (req, res, next) => {
   // const newUser = await User.create(req.body); security flow problem, can be send any data in body
