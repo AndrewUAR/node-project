@@ -25,7 +25,7 @@ mongoose
   })
   .then(() => {
     // eslint-disable-next-line no-console
-    console.log('DB connection succesfull');
+    console.log('DB connection successful');
   });
 
 const port = process.env.PORT || 3000;
@@ -37,7 +37,7 @@ const server = app.listen(port, () => {
 
 process.on('unhandledRejection', err => {
   console.log('UNHANDLED REJECTION! Shutting down...');
-  console.log(err, err.name, err.message);
+  console.log(err.name, err.message);
   server.close(() => {
     process.exit(1);
   });
