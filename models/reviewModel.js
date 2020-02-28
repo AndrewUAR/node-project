@@ -39,11 +39,13 @@ const reviewSchema = new mongoose.Schema(
   }
 );
 
+//Turn off reviews populate, because we don't want populate chaining
+
 reviewSchema.pre(/^find/, function(next) {
-  this.populate({
-    path: 'tour',
-    select: 'name'
-  });
+  // this.populate({
+  //   path: 'tour',
+  //   select: 'name'
+  // });
   this.populate({
     path: 'user',
     select: '-__v -passwordChangedAt'
