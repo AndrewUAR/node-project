@@ -117,12 +117,8 @@ const tourSchema = new mongoose.Schema(
     ]
   },
   {
-    toJSON: {
-      virtuals: true
-    },
-    toObject: {
-      virtuals: true
-    }
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true }
   }
 );
 
@@ -130,6 +126,13 @@ const tourSchema = new mongoose.Schema(
 // Can't use virtual property in query
 tourSchema.virtual('durationWeeks').get(function() {
   return this.duration / 7;
+});
+
+//Virtual populate
+tourSchema.virtual('reviews', {
+  ref: 'Review',
+  localField: '_id',
+  foreignField: 'tour'
 });
 
 //DOCUMENT MIDDLEWARE, RUNS BEFORE .SAVE() AND CREATE()
