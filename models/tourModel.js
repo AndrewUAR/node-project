@@ -135,6 +135,10 @@ tourSchema.virtual('reviews', {
   foreignField: 'tour'
 });
 
+// tourSchema.index({ price: 1 });
+//compound index
+tourSchema.index({ price: 1, ratingsAverage: -1 });
+tourSchema.index({ slug: 1 });
 //DOCUMENT MIDDLEWARE, RUNS BEFORE .SAVE() AND CREATE()
 tourSchema.pre('save', function(next) {
   this.slug = slugify(this.name, { lower: true });
