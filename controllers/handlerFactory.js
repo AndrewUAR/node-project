@@ -68,7 +68,10 @@ exports.getAll = Model =>
       .sort()
       .limitFields()
       .paginate();
-    const document = await features.query;
+
+    // const document = await features.query.explain();
+    const document = await features.query.explain();
+
     res.status(200).json({
       status: 'success',
       results: document.length,
