@@ -35,7 +35,7 @@ exports.createOne = Model =>
     res.status(201).json({
       status: 'success',
       data: {
-        document
+        document: document
       }
     });
   });
@@ -70,7 +70,7 @@ exports.getAll = Model =>
       .paginate();
 
     // const document = await features.query.explain();
-    const document = await features.query.explain();
+    const document = await features.query;
 
     res.status(200).json({
       status: 'success',
