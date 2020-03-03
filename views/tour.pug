@@ -1,6 +1,9 @@
 extends base
 include _reviewCard
-      
+
+block append head
+  script(src='https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.js')
+  link(href='https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.css' rel='stylesheet')
 
 mixin overviewBox(label, text, icon)
   .overview-box__detail
@@ -51,8 +54,8 @@ block content
               - if (guide.role === 'lead-guide')
                 span.overview-box__label Lead guide
               - if (guide.role === 'guide')
-              span.overview-box__label Tour guide
-              span.overview-box__text= tour.guides[0].name
+                span.overview-box__label Tour guide
+              span.overview-box__text= guide.name
 
     .description-box
       h2.heading-secondary.ma-bt-lg= `About ${tour.name} tour`
@@ -67,7 +70,7 @@ block content
         class=`picture-box__img--${index + 1}`)
 
   section.section-map
-    #map
+    #map(data-locations=`${JSON.stringify(tour.locations)}`)
 
   section.section-reviews
     .reviews
