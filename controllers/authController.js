@@ -85,7 +85,7 @@ exports.logout = (req, res) => {
     httpOnly: true
   });
   res.status(200).json({ status: 'success' });
-}
+};
 
 exports.protect = catchAsync(async (req, res, next) => {
   //1) Getting token and checking if it exists
@@ -122,12 +122,12 @@ exports.protect = catchAsync(async (req, res, next) => {
 
   //Grant access to protected route
   req.user = currentUser;
+  res.locals.user = currentUser;
   next();
 });
 
 //Only for rendered pages, no errors!
 exports.isLoggedIn = async (req, res, next) => {
-  console.log(req.cookies.jwt);
   if (req.cookies.jwt) {
     try {
       //1) Verification token
