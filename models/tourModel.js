@@ -178,11 +178,11 @@ tourSchema.pre(/^find/, function(next) {
   next();
 });
 
-tourSchema.post(/^find/, function(docs, next) {
-  // console.log(Date.now() - this.start);
-  // console.log(docs);
-  next();
-});
+// tourSchema.post(/^find/, function(docs, next) {
+//   // console.log(Date.now() - this.start);
+//   // console.log(docs);
+//   next();
+// });
 
 //Aggregation middleware
 tourSchema.pre('aggregate', function(next) {

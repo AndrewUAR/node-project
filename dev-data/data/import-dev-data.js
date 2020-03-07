@@ -24,11 +24,11 @@ mongoose
   })
   .then(() => {
     // eslint-disable-next-line no-console
-    console.log('DB connection succesfull');
+    // console.log('DB connection succesfull');
   })
   .catch(err => {
     // eslint-disable-next-line no-console
-    console.log(err);
+    // console.log(err);
   });
 
 const tours = JSON.parse(fs.readFileSync(`${__dirname}/tours.json`, 'utf-8'));
@@ -42,10 +42,10 @@ const importData = async () => {
     await Tour.create(tours);
     await User.create(users, { validateBeforeSave: false });
     await Review.create(reviews);
-    console.log('Data successfully imported.');
+    // console.log('Data successfully imported.');
     process.exit();
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
 };
 
@@ -54,10 +54,10 @@ const deleteData = async () => {
     await User.deleteMany();
     await Tour.deleteMany();
     await Review.deleteMany();
-    console.log('Data successfully deleted.');
+    // console.log('Data successfully deleted.');
     process.exit();
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
 };
 
@@ -67,4 +67,4 @@ if (process.argv[2] === '--import') {
   deleteData();
 }
 
-console.log(process.argv);
+// console.log(process.argv);
