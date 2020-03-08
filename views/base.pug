@@ -10,7 +10,7 @@ html
       script(src='https://js.stripe.com/v3/')
       title Natours | #{title}
     
-  body
+  body(data-alert=`${alert ? alert : ''}`)
     //- h1= tour
     //-h1 The Park Camper
     //- h2= user.toUpperCase()
