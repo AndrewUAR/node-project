@@ -13,6 +13,7 @@ const signToken = id => {
 };
 
 const createSendToken = (user, statusCode, req, res) => {
+  console.log(req.headers)
   const token = signToken(user._id);
   res.cookie('jwy', token, {
     expires: new Date(
@@ -20,7 +21,7 @@ const createSendToken = (user, statusCode, req, res) => {
     ),
     // secure: true, //will be send just via https //just in production
     httpOnly: true, //cant be modified by a browser in any way
-    secure: req.secure || req.headers('x-forwarded-proto') === 'https'
+    secure: req.secure || req.headers['x-forwarded-proto'] === 'https'
   });
   // if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
   // cookieOptions.secure = req.secure || req.headers('x-forwarded-proto') === 'https';
